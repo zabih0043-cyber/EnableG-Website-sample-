@@ -1399,6 +1399,12 @@ textarea{
 }
 
 @media (max-width: 699px){
+  .about-hero-title{
+    max-width:none;
+    font-size:clamp(2.05rem, 8vw, 2.75rem);
+    line-height:.98;
+  }
+
   .hero-copy h1{
     max-width:none;
     font-size:clamp(2.45rem, 9.6vw, 3.5rem);
