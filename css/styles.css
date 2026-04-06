@@ -1401,26 +1401,26 @@ textarea{
 @media (max-width: 699px){
   .about-hero-title{
     max-width:none;
-    font-size:clamp(2.05rem, 8vw, 2.75rem);
-    line-height:.98;
+    font-size:clamp(2.24rem, 8.7vw, 3rem);
+    line-height:.96;
   }
 
   .life-balance-hero-title{
     max-width:none;
-    font-size:clamp(2.05rem, 8vw, 2.75rem);
-    line-height:.98;
+    font-size:clamp(2.24rem, 8.7vw, 3rem);
+    line-height:.96;
   }
 
   .business-hero-title{
     max-width:none;
-    font-size:clamp(2.05rem, 8vw, 2.75rem);
-    line-height:.98;
+    font-size:clamp(2.16rem, 8.2vw, 2.88rem);
+    line-height:.97;
   }
 
   .how-it-works-hero-title{
     max-width:none;
-    font-size:clamp(2.05rem, 8vw, 2.75rem);
-    line-height:.98;
+    font-size:clamp(2.2rem, 8.5vw, 2.95rem);
+    line-height:.96;
   }
 
   .hero-copy h1{
