@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Life Balance Wheel thumbnail</title>
+  <desc id="desc">Abstract card preview for the Life Balance Wheel tool.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f6f3ea"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="400" cy="250" r="138" fill="none" stroke="#0B2F1F" stroke-width="18"/>
+  <circle cx="400" cy="250" r="96" fill="none" stroke="#D6B46A" stroke-width="16" opacity=".95"/>
+  <path d="M400 112v276M262 250h276M304 154l192 192M304 346l192-192" stroke="#0B2F1F" stroke-width="10" opacity=".28"/>
+  <rect x="72" y="78" width="230" height="34" rx="17" fill="#0B2F1F" opacity=".12"/>
+  <rect x="72" y="390" width="304" height="20" rx="10" fill="#0B2F1F" opacity=".12"/>
+  <rect x="72" y="424" width="244" height="20" rx="10" fill="#D6B46A" opacity=".42"/>
+</svg>

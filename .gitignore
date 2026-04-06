@@ -1,0 +1,6 @@
+node_modules/
+.npm-cache/
+.parcel-cache/
+.parcel-dev/
+dist/
+.vercel/

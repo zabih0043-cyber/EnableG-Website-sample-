@@ -1,0 +1,16 @@
+{
+  "name": "enableg-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enable G multi-page website",
+  "scripts": {
+    "dev": "parcel index.html about.html life-balance.html business.html how-it-works.html contact.html --dist-dir .parcel-dev",
+    "build": "parcel build index.html about.html life-balance.html business.html how-it-works.html contact.html --dist-dir dist --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}

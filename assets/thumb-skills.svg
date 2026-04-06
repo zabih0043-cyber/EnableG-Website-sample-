@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Skills and Income thumbnail</title>
+  <desc id="desc">Abstract card preview for the skills and income tool.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f7f3ea"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect x="110" y="90" width="250" height="320" rx="24" fill="#0B2F1F"/>
+  <rect x="146" y="132" width="128" height="18" rx="9" fill="#ffffff" opacity=".18"/>
+  <rect x="146" y="176" width="172" height="18" rx="9" fill="#ffffff" opacity=".18"/>
+  <rect x="146" y="220" width="136" height="18" rx="9" fill="#D6B46A"/>
+  <rect x="146" y="264" width="106" height="18" rx="9" fill="#ffffff" opacity=".18"/>
+  <path d="M442 356V170M442 170l54 54M442 170l-54 54" fill="none" stroke="#D6B46A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="500" y="240" width="172" height="24" rx="12" fill="#0B2F1F" opacity=".14"/>
+  <rect x="500" y="286" width="112" height="24" rx="12" fill="#D6B46A" opacity=".7"/>
+  <rect x="500" y="332" width="148" height="24" rx="12" fill="#0B2F1F" opacity=".09"/>
+</svg>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact | Enable G</title>
+    <meta
+      name="description"
+      content="Contact Enable G to enquire about support for life balance, personal stability, or business growth."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="nav">
+        <div class="container nav-inner">
+          <a class="brand" href="index.html" aria-label="Enable G home">
+            <span class="brand-mark">
+              <img
+                src="assets/enableg-logo.png"
+                alt="Enable G logo"
+                class="brand-logo"
+              />
+            </span>
+          </a>
+          <nav class="nav-links">
+            <a class="link" data-nav href="index.html">Home</a>
+            <a class="link" data-nav href="about.html">About</a>
+            <a class="link" data-nav href="life-balance.html">Life Balance</a>
+            <a class="link" data-nav href="business.html">Business</a>
+            <a class="link" data-nav href="how-it-works.html">How It Works</a>
+            <a class="link" data-nav href="contact.html">Contact</a>
+          </nav>
+          <div class="nav-cta">
+            <a class="btn btn-primary" href="contact.html">Book a Conversation</a>
+            <button
+              class="burger"
+              data-burger
+              aria-label="Open menu"
+              aria-expanded="false"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="mobile-drawer" data-drawer>
+        <div class="container">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="life-balance.html">Life Balance</a>
+          <a href="business.html">Business</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="contact.html">Contact</a>
+          <div class="row">
+            <a class="btn btn-primary" href="contact.html">Book a Conversation</a>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <section class="page-hero">
+          <div class="container page-hero-grid">
+            <div class="page-hero-copy reveal">
+              <div class="eyebrow">Contact</div>
+              <h1>Let us begin with a calm conversation.</h1>
+              <p class="lead">
+                If you are looking for support with life balance, personal
+                stability, or business direction, get in touch and share what
+                kind of help would feel most useful right now.
+              </p>
+            </div>
+            <div class="page-hero-card reveal">
+              <img
+                src="assets/leaves%20and%20glass.jpg"
+                alt="Leaves and glass arrangement"
+                loading="eager"
+                decoding="sync"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="section-compact">
+          <div class="container contact-layout">
+            <div class="contact-stack reveal">
+              <article class="contact-card">
+                <div class="eyebrow">Support focus</div>
+                <h3 style="margin-top: 18px">What you can enquire about</h3>
+                <p class="card-copy">
+                  We welcome conversations around life balance, stability,
+                  personal growth, and business support.
+                </p>
+              </article>
+
+              <article class="contact-card">
+                <div class="eyebrow">Contact</div>
+                <h3 style="margin-top: 18px">Email</h3>
+                <p class="card-copy">info@enableg.net</p>
+              </article>
+
+              <article class="contact-card">
+                <div class="eyebrow">Tone</div>
+                <h3 style="margin-top: 18px">What to expect</h3>
+                <p class="card-copy">
+                  A thoughtful, respectful reply that aims to clarify your next
+                  step rather than overwhelm you.
+                </p>
+              </article>
+            </div>
+
+            <div class="form-panel reveal">
+              <div class="eyebrow">Send an enquiry</div>
+              <h2 style="margin-top: 18px; margin-bottom: 12px">Tell us what you need.</h2>
+              <p class="lead" style="margin-bottom: 22px">
+                Share a little about your current situation and we will guide
+                you toward the most suitable next step.
+              </p>
+
+              <form
+                name="enquiry"
+                method="POST"
+                data-netlify="true"
+                action="thanks-enquiry.html"
+                class="form"
+              >
+                <input type="hidden" name="form-name" value="enquiry" />
+
+                <div>
+                  <input class="input" name="name" placeholder="Full name" required />
+                </div>
+                <div>
+                  <input
+                    class="input"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    required
+                  />
+                </div>
+
+                <div class="full">
+                  <select name="topic" required>
+                    <option value="" disabled selected>Select support area</option>
+                    <option>Life Balance</option>
+                    <option>Personal Growth / Stability</option>
+                    <option>Business Support</option>
+                    <option>General Enquiry</option>
+                  </select>
+                </div>
+
+                <div class="full">
+                  <textarea
+                    name="message"
+                    placeholder="Tell us what kind of support you are looking for."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="full">
+                  <button class="btn btn-primary" type="submit">Send Enquiry</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <img
+                src="assets/enableg-logo.png"
+                alt="Enable G logo"
+                class="brand-logo"
+              />
+              <p class="lead">
+                Reach out when you are ready for a more grounded and graceful
+                way forward.
+              </p>
+            </div>
+            <div>
+              <div class="footer-title">Navigate</div>
+              <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="how-it-works.html">How It Works</a>
+              </div>
+            </div>
+            <div>
+              <div class="footer-title">Services</div>
+              <div class="footer-links">
+                <a href="life-balance.html">Life Balance</a>
+                <a href="business.html">Business</a>
+                <a href="contact.html">Contact</a>
+              </div>
+            </div>
+            <div>
+              <div class="footer-title">Connect</div>
+              <div class="footer-links">
+                <a href="contact.html">Book a Conversation</a>
+                <a href="mailto:info@enableg.net">info@enableg.net</a>
+                <a href="index.html">Back to Home</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; <span id="year"></span> Enable G</span>
+            <span>Designed to feel calm, refined, and responsive.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
