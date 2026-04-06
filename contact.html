@@ -126,13 +126,31 @@
               </p>
 
               <form
-                name="enquiry"
                 method="POST"
-                data-netlify="true"
-                action="thanks-enquiry.html"
+                action="/api/enquiry"
                 class="form"
+                id="enquiry-form"
+                data-enquiry-form
               >
-                <input type="hidden" name="form-name" value="enquiry" />
+                <div
+                  class="form-status"
+                  id="form-status"
+                  data-form-status
+                  hidden
+                  aria-live="polite"
+                ></div>
+
+                <div class="field-hp" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input
+                    class="input"
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
 
                 <div>
                   <input class="input" name="name" placeholder="Full name" required />
