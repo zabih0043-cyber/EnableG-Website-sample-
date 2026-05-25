@@ -14,7 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/global.css" />
   </head>
   <body>
     <div class="site-shell">
@@ -73,15 +75,26 @@
 
       <main>
         <section class="hero">
-          <div class="container hero-grid">
-            <div class="hero-copy" data-hero>
+          <div class="hero-bg">
+            <img
+              class="hero-photo"
+              src="assets/enableg-hero.jpg"
+              alt="A hand holding a green plant"
+              loading="eager"
+              decoding="sync"
+              fetchpriority="high"
+            />
+          </div>
+
+          <div class="container hero-content" data-hero>
+            <div class="hero-copy">
               <div class="eyebrow reveal" data-stagger>
                 Elegant growth support
               </div>
               <h1 class="reveal" data-stagger>
-                Bringing <span class="accent">Life Balance</span
-                >,<span class="tablet-break"></span> Stability, and
-                Business<span class="tablet-break"></span> Clarity Together.
+                Bringing <span class="accent">Life Balance</span>,<br />
+                Stability, and<br />
+                Business Clarity Together.
               </h1>
               <p class="lead reveal" data-stagger>
                 Enable G helps people create stability using simple assessments,
@@ -104,27 +117,14 @@
                 <span>Personal Growth / Stability</span>
               </div>
             </div>
+          </div>
 
-            <div class="hero-visual reveal">
-              <div class="hero-frame">
-                <div class="hero-stripes"></div>
-                <img
-                  class="hero-photo"
-                  src="assets/enableg-hero.jpg"
-                  alt="A hand holding a green plant"
-                  loading="eager"
-                  decoding="sync"
-                  fetchpriority="high"
-                />
-                <div class="hero-note">
-                  <strong>Calm guidance. Practical movement.</strong>
-                  <span>
-                    A refined support path for people who want progress with
-                    dignity, consistency, and clarity.
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div class="hero-note">
+            <strong>Calm guidance. Practical movement.</strong>
+            <span>
+              A refined support path for people who want progress with
+              dignity, consistency, and clarity.
+            </span>
           </div>
         </section>
 

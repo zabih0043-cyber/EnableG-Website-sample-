@@ -12,7 +12,7 @@
     btn.appendChild(label);
   });
 
-  document.querySelectorAll(".hero-frame, .page-hero-card").forEach((shell) => {
+  document.querySelectorAll(".hero-bg, .page-hero-card").forEach((shell) => {
     const img = shell.querySelector("img");
     if (!img) return;
 
@@ -140,6 +140,14 @@
         }
       }
     });
+  }
+
+  // Nav solidifies on scroll
+  const nav = document.querySelector(".nav");
+  if (nav) {
+    const syncNav = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+    window.addEventListener("scroll", syncNav, { passive: true });
+    syncNav();
   }
 
   const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();

@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════
+   Enable G — Design Tokens
+   Edit here to change the brand palette,
+   type scale, or spacing system site-wide.
+   ═══════════════════════════════════════════ */
+
+:root{
+  /* Colour */
+  --bg:#fcfaf5;
+  --bg-soft:#f4efe5;
+  --surface:#ffffff;
+  --surface-strong:#f8f4eb;
+  --text:#171712;
+  --muted:#5f6057;
+  --line:rgba(23,23,18,.11);
+  --line-strong:rgba(23,23,18,.18);
+
+  --forest:#88cb4d;
+  --forest-2:#215d47;
+  --sage:#b4df84;
+  --gold:#c5a45d;
+  --gold-soft:#e9dbc0;
+
+  /* Shadow */
+  --shadow:0 24px 70px rgba(17,22,20,.08);
+  --shadow-soft:0 16px 40px rgba(17,22,20,.05);
+  --shadow-lift:0 28px 80px rgba(17,22,20,.12);
+
+  /* Radius */
+  --radius-sm:18px;
+  --radius-md:28px;
+  --radius-lg:42px;
+
+  /* Layout */
+  --max:1240px;
+  --nav-h:72px;
+
+  /* Easing */
+  --ease:cubic-bezier(.22,1,.36,1);
+}
