@@ -5,7 +5,8 @@
   "description": "Enable G multi-page website",
   "scripts": {
     "dev": "parcel index.html about.html life-balance.html business.html how-it-works.html contact.html --dist-dir .parcel-dev",
-    "build": "parcel build index.html about.html life-balance.html business.html how-it-works.html contact.html --dist-dir dist --public-url ./"
+    "build": "parcel build index.html about.html life-balance.html business.html how-it-works.html contact.html --dist-dir dist --public-url / && npm run collect-apps",
+    "collect-apps": "node scripts/collect-apps.js"
   },
   "keywords": [],
   "author": "",

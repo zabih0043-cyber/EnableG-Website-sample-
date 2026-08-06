@@ -159,6 +159,20 @@ textarea{
   margin-bottom:18px;
 }
 
+/* Carries how long a tool takes, instead of a step number. These are choices
+   a person picks between, not a sequence, so numbering them would promise an
+   order that does not exist. */
+.card-index.is-time{
+  width:auto;
+  height:32px;
+  padding:0 15px;
+  border-radius:999px;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
 .card-title{ margin-bottom:10px; }
 .card-copy{ color:var(--muted); }
 
@@ -285,6 +299,14 @@ textarea{
 .eyebrow{
   display:inline-flex;
   align-items:center;
+  /* A grid or flex parent BLOCKIFIES an inline-flex child — computed display
+     becomes flex and it fills the whole column. That is what stretched the
+     Life Balance eyebrow into 606px of empty pill. Pin it to the start of the
+     inline axis and let it size to its own text. */
+  justify-self:start;
+  align-self:start;
+  width:fit-content;
+  max-width:100%;
   gap:10px;
   padding:10px 16px;
   border:1px solid rgba(21,61,49,.12);
@@ -554,8 +576,12 @@ textarea{
 .hero-copy{ max-width:880px; }
 
 .hero-copy h1{
-  font-size:clamp(3rem,4.5vw,4.5rem);
-  line-height:.95;
+  /* Same measure as the page headlines. The manual <br> tags this used to
+     rely on broke badly at other widths; balance handles it instead. */
+  max-width:17ch;
+  font-size:clamp(2.6rem,4.4vw,4.1rem);
+  line-height:1;
+  text-wrap:balance;
   color:var(--text);
   margin-top:20px;
 }
@@ -665,31 +691,23 @@ textarea{
 
 .page-hero-copy{ display:grid;gap:18px; }
 
-.about-hero-title{
-  max-width:12ch;
-  font-size:clamp(2.7rem,7.4vw,4.6rem);
-  line-height:.96;
-  text-wrap:balance;
-}
+/* ── Page headlines ──────────────────────────────────────────────────
+   These were set to a measure of 11–13ch, which suits a three-word
+   headline and forces anything longer into four or five lines. A display
+   line wants roughly 16–18 characters: short enough to stay punchy, wide
+   enough that a normal sentence lands in two or three lines.
 
-.life-balance-hero-title{
-  max-width:11ch;
-  font-size:clamp(2.7rem,7.2vw,4.4rem);
-  line-height:.96;
-  text-wrap:balance;
-}
-
-.business-hero-title{
-  max-width:13ch;
-  font-size:clamp(2.55rem,6.8vw,4.15rem);
-  line-height:.96;
-  text-wrap:balance;
-}
-
+   One rule for all four pages, so a headline cannot look different on one
+   page for no reason. Keep headlines under about 45 characters and they
+   will set in two or three lines at every width.
+   ═══════════════════════════════════════════ */
+.about-hero-title,
+.life-balance-hero-title,
+.business-hero-title,
 .how-it-works-hero-title{
-  max-width:12ch;
-  font-size:clamp(2.55rem,6.9vw,4.15rem);
-  line-height:.96;
+  max-width:17ch;
+  font-size:clamp(2.4rem,6vw,3.9rem);
+  line-height:1;
   text-wrap:balance;
 }
 
@@ -713,9 +731,13 @@ textarea{
   height:100%;
   object-fit:cover;
   object-position:18% center;
-  opacity:0;
   transition:opacity .22s var(--ease);
 }
+
+/* The fade-in waits for JS to add .media-ready on image load. Scoped to .js
+   so that without JavaScript the photograph is simply visible, rather than
+   sitting at opacity:0 forever. */
+.js .page-hero-card img{ opacity:0; }
 
 .page-hero-card::after{
   content:"";
@@ -1122,14 +1144,19 @@ textarea{
 
 /* ═══════════════════════════════════════════
    MOTION — scroll reveal
+
+   Scoped to .js so the page is READABLE WITHOUT JAVASCRIPT. The <html class="js">
+   flag is set by an inline script in each page's head. If that script never runs
+   — JS disabled, a blocked bundle, a slow phone giving up — the content simply
+   shows, rather than staying at opacity:0 forever.
    ═══════════════════════════════════════════ */
-.reveal{
+.js .reveal{
   opacity:0;
   transform:translateY(16px);
   transition:opacity .7s var(--ease),transform .7s var(--ease);
 }
 
-.reveal.in{
+.js .reveal.in{
   opacity:1;
   transform:none;
 }
@@ -1137,6 +1164,7 @@ textarea{
 @media (prefers-reduced-motion:reduce){
   *{ scroll-behavior:auto !important; }
 
+  .js .reveal,
   .reveal{
     opacity:1;
     transform:none;

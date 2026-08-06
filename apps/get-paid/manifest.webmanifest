@@ -1,0 +1,33 @@
+{
+  "name": "Enable G — Get Paid",
+  "short_name": "Get Paid",
+  "description": "Price a job, check it is worth doing, and send a professional quote or invoice on WhatsApp.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#143928",
+  "lang": "en-ZA",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

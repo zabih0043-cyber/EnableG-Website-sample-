@@ -1,0 +1,254 @@
+/* ═══════════════════════════════════════════
+   Enable G — Tools hub
+
+   Extends the existing system. Every colour, radius and shadow below is a
+   token from variables.css; nothing new is invented here.
+   ═══════════════════════════════════════════ */
+
+/* ── The "next step" callout ───────────────────────────────────────── */
+
+.next-step {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--forest);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.next-step-copy {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.next-step .eyebrow {
+  margin-bottom: 6px;
+}
+
+.next-step h2 {
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  margin: 0 0 6px;
+}
+
+.next-step p {
+  color: var(--muted);
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* ── Stage headings ────────────────────────────────────────────────── */
+
+.stage-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 30px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+/* A lone serif numeral is only ~14px wide and, in gold on cream, reads as a
+   smudge rather than a mark. The rule underneath gives it width and intent.
+   The stages ARE a real sequence — see where you stand, then steady the money
+   — so numbering them is honest. */
+.stage-number {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.1rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--gold);
+  flex: 0 0 auto;
+  min-width: 44px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  align-self: flex-start;
+}
+
+.stage-head h2 {
+  margin: 0;
+  flex: 1 1 240px;
+}
+
+.stage-head p {
+  color: var(--muted);
+  margin: 0;
+  flex: 1 1 100%;
+  max-width: 62ch;
+}
+
+/* ── Tool cards ────────────────────────────────────────────────────── */
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease),
+    border-color 0.5s var(--ease);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--line-strong);
+}
+
+.tool-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.tool-card h3 {
+  font-size: 1.28rem;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.tool-card .card-copy {
+  flex: 1;
+  margin: 0;
+}
+
+/* What it actually gives you — the specifics, not adjectives. */
+.tool-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-facts span {
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.tool-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ── Status badge ──────────────────────────────────────────────────── */
+
+.status {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 5px 11px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  border: 1px solid transparent;
+}
+
+.status[data-state="new"] {
+  color: var(--muted);
+  background: var(--surface-strong);
+  border-color: var(--line);
+}
+
+.status[data-state="started"] {
+  color: #8a6d1f;
+  background: var(--gold-soft);
+  border-color: rgba(197, 164, 93, 0.45);
+}
+
+.status[data-state="done"] {
+  color: var(--forest-2);
+  background: rgba(180, 223, 132, 0.34);
+  border-color: rgba(33, 93, 71, 0.28);
+}
+
+/* The one-line result carried back from a finished tool. */
+.tool-result {
+  font-size: 0.9rem;
+  color: var(--forest-2);
+  background: rgba(180, 223, 132, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 11px 15px;
+  margin: 0;
+}
+
+/* ── Not-yet-connected tools ───────────────────────────────────────── */
+
+.tool-card[data-ready="false"] {
+  opacity: 0.72;
+}
+
+.tool-card[data-ready="false"]:hover {
+  transform: none;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ── Progress Tracker sits across all three stages, not inside one ── */
+
+.companion {
+  background: linear-gradient(
+    135deg,
+    var(--surface-strong) 0%,
+    var(--bg-soft) 100%
+  );
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 42px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.companion h2 {
+  margin: 0 0 12px;
+}
+
+.companion p {
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: 54ch;
+}
+
+/* ── A quiet note when the browser will not remember ───────────────── */
+
+.storage-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 34px;
+}
+
+@media (max-width: 900px) {
+  .companion {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .next-step {
+    padding: 24px;
+  }
+}

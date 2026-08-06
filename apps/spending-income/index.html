@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Enable G | Spending & Income Tool (SA)</title>
+    <meta
+      name="description"
+      content="Map your monthly needs, compare your current & target income, & build a practical plan with Enable G."
+    />
+    <meta name="theme-color" content="#143928" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Outfit:wght@500;600;700;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app-shell">
+      <header class="site-header">
+        <nav class="nav" aria-label="Primary">
+          <div class="brand">
+            <img
+              class="brand-logo"
+              src="assets/Logo.png"
+              alt="Enable G logo"
+              width="56"
+              height="56"
+              decoding="async"
+            />
+
+            <div class="brand-text">
+              <div class="brand-name">Spending & Income Tool (SA)</div>
+            </div>
+          </div>
+
+          <div class="nav-meta">
+            <div class="nav-status" id="saveStatus">
+              Private & autosaved locally
+            </div>
+            <span class="tier-badge" id="tierBadge" hidden>Free Plan</span>
+
+            <div class="nav-actions">
+              <button class="btn btn-ghost" type="button" id="btnReset">
+                Reset
+              </button>
+              <button class="btn btn-primary" type="button" id="btnPrint">
+                Export PDF
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container">
+          <div class="hero-inner">
+            <div class="hero-card">
+              <div class="hero-top">
+                <span class="pill"
+                  >Mobile Planning App
+                  <span class="brand-version">v1.1</span></span
+                >
+                <span class="pill pill-soft"
+                  >Live Calculations + Local Privacy</span
+                >
+              </div>
+
+              <h1 id="heroTitle">
+                Build an <span class="hero-highlight">Income Plan</span> That
+                Fits Real Life.
+              </h1>
+              <p class="hero-subtitle">
+                Enable G Spending & Income Tool SA helps you understand your
+                monthly 'Needs only' living costs & in a few minutes, find side
+                hustles to achieve your income goals.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-wide" href="#profileTitle">
+                  Start planning
+                </a>
+                <a class="btn btn-ghost" href="#summaryTitle">View summary</a>
+              </div>
+
+              <section class="hero-stats" aria-label="Live plan summary">
+                <article class="hero-stat">
+                  <span class="stat-label">Extra Income Target</span>
+                  <output id="heroExtraIncome" class="stat-value">R0</output>
+                  <p class="stat-note">
+                    Monthly extra income target (be realistic; you can always
+                    increase later)
+                  </p>
+                </article>
+
+                <article class="hero-stat">
+                  <span class="stat-label">Hours needed</span>
+                  <output id="heroExtraHours" class="stat-value">0</output>
+                  <p class="stat-note">
+                    Weekly hours required at your minimum rate.
+                  </p>
+                </article>
+
+                <article class="hero-stat">
+                  <span class="stat-label">Forecast Extra Income Amount</span>
+                  <output id="heroServices" class="stat-value">R0</output>
+                  <p class="stat-note">
+                    Monthly income currently estimated from side hustles.
+                  </p>
+                </article>
+              </section>
+            </div>
+
+            <aside class="hero-side" aria-label="Enable G overview">
+              <div class="side-card side-card-illustrated">
+                <p class="eyebrow">In-app flow</p>
+                <h2>Simple Planning</h2>
+
+                <ul class="side-list side-list-check">
+                  <li>
+                    Check whether current income covers monthly essentials
+                  </li>
+                  <li>Calculate your hourly rate from salary & work hours</li>
+                  <li>Track your 2026 extra income in real time</li>
+                  <li>
+                    Use skills & experience to suggest potential side hustles
+                  </li>
+                  <li>Export a summary to record & track progress</li>
+                </ul>
+              </div>
+
+              <div class="side-card side-card-illustrated">
+                <p class="eyebrow">Quick prep</p>
+                <h2>Before You Start</h2>
+                <p class="side-copy">
+                  A few simple details will help you get a more realistic income
+                  plan.
+                </p>
+
+                <ul class="side-list side-list-check">
+                  <li>Your current monthly income</li>
+                  <li>Your monthly needs, including dependency costs</li>
+                  <li>The hours you can realistically work each week</li>
+                  <li>A short list of skills or past work experience</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <main id="main" class="container">
+        <div class="layout">
+          <section class="content" aria-label="Calculator inputs">
+            <section class="card status-card" aria-labelledby="planStatusTitle">
+              <header class="card-header compact-header">
+                <div>
+                  <p class="eyebrow">Live plan status</p>
+                  <h2 id="planStatusTitle">
+                    How your income plan is progressing
+                  </h2>
+                </div>
+
+                <span class="status-badge tone-neutral" id="planStatusBadge">
+                  Setup needed
+                </span>
+              </header>
+
+              <p class="status-copy" id="planStatusText">
+                Add your income, target, & rate to unlock a full plan view.
+              </p>
+
+              <div class="meter" aria-hidden="true">
+                <div class="meter-fill" id="goalMeterFill"></div>
+              </div>
+
+              <div class="status-grid">
+                <article class="status-metric">
+                  <span class="status-label">Goal progress</span>
+                  <output id="goalProgressValue" class="status-value"
+                    >0%</output
+                  >
+                </article>
+
+                <article class="status-metric">
+                  <span class="status-label">Gap remaining to hit goal</span>
+                  <output id="gapRemainingValue" class="status-value"
+                    >R0</output
+                  >
+                </article>
+
+                <article class="status-metric">
+                  <span class="status-label">Income with side hustles</span>
+                  <output id="totalIncomeValue" class="status-value">R0</output>
+                </article>
+              </div>
+            </section>
+
+            <section class="card" aria-labelledby="profileTitle">
+              <header class="card-header">
+                <h2 id="profileTitle">Profile</h2>
+                <p class="card-subtitle">
+                  Enter Your Information. Everything stays in this browser
+                  unless you export it.
+                </p>
+              </header>
+
+              <div class="grid-3">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="date">Date</label>
+                  <input id="date" name="date" type="date" />
+                </div>
+
+                <div class="field">
+                  <label for="reference">Reference</label>
+                  <input
+                    id="reference"
+                    name="reference"
+                    type="text"
+                    placeholder="Optional reference"
+                  />
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label for="currentMonthlyIncome">
+                    My Current Income (monthly, after tax) - R
+                  </label>
+                  <input
+                    id="currentMonthlyIncome"
+                    name="currentMonthlyIncome"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 14500"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="targetMonthlyIncome">
+                    My goal income for 2026 (monthly) - R
+                  </label>
+                  <input
+                    id="targetMonthlyIncome"
+                    name="targetMonthlyIncome"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="1"
+                    placeholder="20000"
+                    value="20000"
+                  />
+                  <p class="hint" id="targetHint">
+                    Enable G recommends aiming for at least R20,000 per month.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="card" aria-labelledby="needsTitle">
+              <header class="card-header">
+                <h2 id="needsTitle">Monthly "Needs" Costs</h2>
+                <p class="card-subtitle">
+                  Work out what you need to earn to cover essential living
+                  costs, including anyone who depends on your support.
+                </p>
+              </header>
+
+              <section
+                class="table-wrap"
+                aria-label="Needs costs table"
+                tabindex="0"
+              >
+                <table class="data-table" id="needsTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Item</th>
+                      <th scope="col" class="right">Amount (R)</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Rent / Mortgage</td>
+                      <td class="right">
+                        <input
+                          id="needRent"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Food & living essentials</td>
+                      <td class="right">
+                        <input
+                          id="needFood"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Bills, travel, petrol, utilities</td>
+                      <td class="right">
+                        <input
+                          id="needBills"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Debt costs (loans & credit cards)</td>
+                      <td class="right">
+                        <input
+                          id="needDebt"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Dependencies / people you support</td>
+                      <td class="right">
+                        <input
+                          id="needDependencies"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <th scope="row">Total Monthly Needs</th>
+                      <td class="right">
+                        <output id="needsTotal" aria-live="polite">R0</output>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </section>
+            </section>
+
+            <section class="card" aria-labelledby="currentTitle">
+              <header class="card-header">
+                <h2 id="currentTitle">Current Situation</h2>
+                <p class="card-subtitle">
+                  Understand your hourly pay rate so you can compare other
+                  income/side hustles
+                </p>
+              </header>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label for="currentJob">What is your current job?</label>
+                  <input
+                    id="currentJob"
+                    type="text"
+                    placeholder="e.g. Sales assistant"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="salaryAfterTax"
+                    >Monthly Salary (after tax) - R</label
+                  >
+                  <input
+                    id="salaryAfterTax"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 14500"
+                  />
+                  <p class="hint" id="incomeSyncHint">
+                    This stays in sync with the current income field above.
+                  </p>
+                </div>
+
+                <div class="field">
+                  <label for="hoursPerWeek">Hours per week</label>
+                  <input
+                    id="hoursPerWeek"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    max="100"
+                    step="1"
+                    placeholder="e.g. 40"
+                  />
+                </div>
+
+                <div class="field">
+                  <label>Current hourly pay rate (R/hr)</label>
+                  <output
+                    id="currentHourlyRate"
+                    class="output"
+                    aria-live="polite"
+                  >
+                    R0
+                  </output>
+                  <p class="hint">Calculated from salary & weekly hours.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="card" aria-labelledby="targetTitle">
+              <header class="card-header">
+                <h2 id="targetTitle">Target & Extra Income Needs</h2>
+                <p class="card-subtitle">
+                  Set your income goal, hourly rate & see the hours needed to
+                  hit this goal
+                </p>
+              </header>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label for="minHourlyRate"
+                    >Minimum hourly rate (at least R150/hr)</label
+                  >
+                  <input
+                    id="minHourlyRate"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="1"
+                    placeholder="150"
+                    value="150"
+                  />
+                  <p class="hint" id="minRateHint">
+                    Suggested minimum: R150/h based on your current earnings
+                    hourly rate.
+                  </p>
+                </div>
+
+                <div class="field">
+                  <label for="targetMonthly"
+                    >Target monthly income (min R20,000)</label
+                  >
+                  <input
+                    id="targetMonthly"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="1"
+                    placeholder="20000"
+                    value="20000"
+                  />
+                </div>
+
+                <div class="field">
+                  <label>Extra income needed (monthly)</label>
+                  <output
+                    id="extraIncomeNeeded"
+                    class="output"
+                    aria-live="polite"
+                  >
+                    R0
+                  </output>
+                </div>
+
+                <div class="field">
+                  <label>Extra hours needed per week</label>
+                  <output
+                    id="extraHoursPerWeek"
+                    class="output"
+                    aria-live="polite"
+                  >
+                    0
+                  </output>
+                </div>
+              </div>
+
+              <section class="insight-grid" aria-label="Planning insights">
+                <article class="insight-card">
+                  <span class="insight-label"
+                    >Disposable Income (Income - Monthly Essentials)</span
+                  >
+                  <output id="needsCoverage" class="insight-value">R0</output>
+                  <p class="insight-copy" id="needsCoverageText">
+                    Add your current income & needs to see whether essentials
+                    are covered.
+                  </p>
+                </article>
+
+                <article class="insight-card">
+                  <span class="insight-label">Recommended rate</span>
+                  <output id="recommendedRate" class="insight-value"
+                    >R150/hr</output
+                  >
+                  <p class="insight-copy" id="rateGuidanceText">
+                    Your current hourly rate helps you choose a fair minimum.
+                  </p>
+                </article>
+
+                <article class="insight-card">
+                  <span class="insight-label">Gap after side hustles</span>
+                  <output id="remainingGapInline" class="insight-value"
+                    >R0</output
+                  >
+                  <p class="insight-copy" id="remainingGapText">
+                    Add side hustle lines to see how much of the target is still
+                    open.
+                  </p>
+                </article>
+              </section>
+            </section>
+
+            <section class="card" aria-labelledby="skillsTitle">
+              <header class="card-header">
+                <h2 id="skillsTitle">Skills & Experience</h2>
+                <p class="card-subtitle">
+                  Capture what you can already do well. The app uses this to
+                  suggest possible side hustles.
+                </p>
+              </header>
+
+              <div class="skills-grid">
+                <div class="field">
+                  <label for="skillsList">Skills / Abilities</label>
+                  <textarea
+                    id="skillsList"
+                    rows="6"
+                    placeholder="One per line, for example admin, writing, driving, tech support"
+                  ></textarea>
+                </div>
+
+                <div class="field">
+                  <label for="experienceList">Job experience</label>
+                  <textarea
+                    id="experienceList"
+                    rows="6"
+                    placeholder="One per line, for example cashier, customer service, tutoring"
+                  ></textarea>
+                </div>
+              </div>
+
+              <p class="tip">
+                Tip: Useful side hustles can come from admin work, driving,
+                child care, pet care, beauty, writing, tutoring, or basic tech
+                support.
+              </p>
+
+              <section class="ideas-panel" aria-labelledby="ideasTitle">
+                <div class="ideas-header">
+                  <div>
+                    <p class="eyebrow">Suggested side hustles</p>
+                    <h3 id="ideasTitle">Ideas based on your profile</h3>
+                  </div>
+                  <p class="hint">Click any card to add it to your plan.</p>
+                </div>
+
+                <div class="idea-grid" id="serviceIdeas"></div>
+                <p class="empty-state" id="serviceIdeasEmpty">
+                  Add a few skills or past roles to unlock tailored suggestions.
+                </p>
+              </section>
+            </section>
+
+            <section class="card" aria-labelledby="servicesTitle">
+              <header class="card-header">
+                <h2 id="servicesTitle">Side Hustles</h2>
+                <p class="card-subtitle">
+                  Build a simple extra-income plan & track what it adds up to
+                  each month.
+                </p>
+              </header>
+
+              <section
+                class="services-overview"
+                aria-label="Side hustle overview"
+              >
+                <article class="service-summary">
+                  <span class="service-summary-label"
+                    >Planned hours per week</span
+                  >
+                  <output
+                    id="servicesHoursPlanned"
+                    class="service-summary-value"
+                  >
+                    0
+                  </output>
+                </article>
+
+                <article class="service-summary">
+                  <span class="service-summary-label">Plan covers</span>
+                  <output id="servicesCoverage" class="service-summary-value">
+                    0%
+                  </output>
+                </article>
+
+                <article class="service-summary">
+                  <span class="service-summary-label">Gap remaining</span>
+                  <output id="remainingGap" class="service-summary-value">
+                    R0
+                  </output>
+                </article>
+              </section>
+
+              <div class="card-actions">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  id="btnAddServiceRow"
+                >
+                  Add side hustle
+                </button>
+              </div>
+
+              <section
+                class="table-wrap"
+                aria-label="Side hustle table"
+                tabindex="0"
+              >
+                <table class="data-table" id="servicesTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Side Hustle</th>
+                      <th scope="col" class="right">Hrs/week</th>
+                      <th scope="col" class="right">Rate/h (R)</th>
+                      <th scope="col" class="right">Monthly (R)</th>
+                      <th scope="col" class="right">
+                        <span class="sr-only">Actions</span>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="servicesTbody">
+                    <tr class="service-row" data-index="0">
+                      <td>
+                        <label class="sr-only" for="svcDesc0"
+                          >Side hustle description</label
+                        >
+                        <input
+                          id="svcDesc0"
+                          type="text"
+                          placeholder="e.g. Admin"
+                        />
+                      </td>
+                      <td class="right">
+                        <label class="sr-only" for="svcHours0"
+                          >Hours per week</label
+                        >
+                        <input
+                          id="svcHours0"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          max="100"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                      <td class="right">
+                        <label class="sr-only" for="svcRate0"
+                          >Hourly rate</label
+                        >
+                        <input
+                          id="svcRate0"
+                          type="number"
+                          inputmode="decimal"
+                          min="0"
+                          step="1"
+                          placeholder="0"
+                        />
+                      </td>
+                      <td class="right">
+                        <output id="svcMonthly0" aria-live="polite">R0</output>
+                      </td>
+                      <td class="right">
+                        <button
+                          class="btn btn-ghost btn-remove"
+                          type="button"
+                          data-action="remove-service"
+                          disabled
+                          aria-disabled="true"
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <th scope="row" colspan="3">
+                        Total Extra Income (Monthly)
+                      </th>
+                      <td class="right">
+                        <output id="servicesTotal" aria-live="polite"
+                          >R0</output
+                        >
+                      </td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </section>
+
+              <details class="assumptions">
+                <summary>Assumptions</summary>
+                <ul>
+                  <li>Weeks per month: <strong>52 / 12</strong> (~4.33)</li>
+                  <li>
+                    Monthly totals use hours per week x hourly rate x weeks per
+                    month.
+                  </li>
+                  <li>
+                    The remaining gap updates against your target in real time.
+                  </li>
+                </ul>
+              </details>
+            </section>
+          </section>
+
+          <aside class="summary" aria-label="Summary">
+            <section class="card summary-card" aria-labelledby="summaryTitle">
+              <header class="card-header">
+                <h2 id="summaryTitle">Summary</h2>
+                <p class="card-subtitle">
+                  A quick view of your current numbers & income plan.
+                </p>
+              </header>
+
+              <dl class="summary-list">
+                <div>
+                  <dt>Total monthly needs</dt>
+                  <dd><output id="sumNeeds">R0</output></dd>
+                </div>
+                <div>
+                  <dt>Current hourly rate</dt>
+                  <dd><output id="sumHourly">R0</output></dd>
+                </div>
+                <div>
+                  <dt>Target monthly income</dt>
+                  <dd><output id="sumTarget">R20,000</output></dd>
+                </div>
+                <div>
+                  <dt>Extra income needed</dt>
+                  <dd><output id="sumExtraIncome">R0</output></dd>
+                </div>
+                <div>
+                  <dt>Extra hours/week needed</dt>
+                  <dd><output id="sumExtraHours">0</output></dd>
+                </div>
+                <div class="divider" aria-hidden="true"></div>
+                <div>
+                  <dt>Planned extra income</dt>
+                  <dd><output id="sumServices">R0</output></dd>
+                </div>
+                <div>
+                  <dt>Remaining gap</dt>
+                  <dd><output id="sumRemainingGap">R0</output></dd>
+                </div>
+                <div>
+                  <dt>Total income with side hustles</dt>
+                  <dd><output id="sumIncomeWithServices">R0</output></dd>
+                </div>
+              </dl>
+
+              <p class="summary-message" id="summaryPlanMessage">
+                Start with your income, needs, & weekly hours to build a
+                realistic plan.
+              </p>
+            </section>
+
+            <section class="card progress-card" aria-labelledby="goalCardTitle">
+              <header class="card-header">
+                <p class="eyebrow">Goal readiness</p>
+                <h2 id="goalCardTitle">Monthly target progress</h2>
+              </header>
+
+              <div class="progress-head">
+                <output id="summaryGoalPercent" class="progress-percent"
+                  >0%</output
+                >
+                <span class="progress-caption"
+                  >of target currently covered</span
+                >
+              </div>
+
+              <div class="meter meter-strong" aria-hidden="true">
+                <div class="meter-fill" id="summaryGoalFill"></div>
+              </div>
+
+              <div class="progress-split">
+                <div>
+                  <span class="progress-label">Current income</span>
+                  <output id="summaryCurrentIncome">R0</output>
+                </div>
+                <div>
+                  <span class="progress-label"
+                    >Extra Income From Side Hustles</span
+                  >
+                  <output id="summaryServicePlan">R0</output>
+                </div>
+              </div>
+            </section>
+
+            <section class="card action-card" aria-labelledby="actionTitle">
+              <header class="card-header">
+                <p class="eyebrow">Next moves</p>
+                <h2 id="actionTitle">What to do next</h2>
+              </header>
+
+              <ul class="action-list" id="nextStepsList">
+                <li>Add your current monthly income & target.</li>
+                <li>Enter your weekly hours to calculate your hourly rate.</li>
+                <li>List your skills to unlock side hustle suggestions.</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          &copy; <span id="year"></span> Enable G. Built for clarity, privacy, &
+          practical planning.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Upgrade modal (used by free-tier locked features) -->
+    <div class="modal-overlay" id="upgradeModal" role="dialog" aria-modal="true" aria-labelledby="upgradeModalTitle">
+      <div class="modal">
+        <header class="modal-header">
+          <h2 id="upgradeModalTitle">Premium feature</h2>
+          <button class="modal-close-btn" type="button" id="upgradeModalClose" aria-label="Close dialog">&#x2715;</button>
+        </header>
+        <div class="modal-body">
+          <p class="modal-intro">This feature is part of the <strong>Enable G Premium Plan</strong>.</p>
+          <ul class="modal-features">
+            <li>Export your plan as a PDF</li>
+            <li>Unlock all side hustle suggestions</li>
+            <li>Set a custom minimum hourly rate</li>
+            <li>Save & switch between multiple plans</li>
+          </ul>
+          <p class="modal-note">Subscription coming soon &mdash; stay tuned for updates from Enable G.</p>
+        </div>
+        <footer class="modal-footer">
+          <button class="btn btn-primary" type="button" id="upgradeModalConfirm">Got it</button>
+        </footer>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

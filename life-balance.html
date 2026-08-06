@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>document.documentElement.classList.add("js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Life Balance | Enable G</title>
     <meta
       name="description"
-      content="Life Balance at Enable G focuses on practical tools, reflection, and consistent support for greater stability."
+      content="Five free tools: rate ten areas of your life, find out what is blocking you, see how you work, and check whether this month is covered. Four to ten minutes each, on your phone, nothing sent anywhere."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/apps.css" />
   </head>
   <body>
     <div class="site-shell">
@@ -73,62 +75,183 @@
             <div class="page-hero-copy reveal">
               <div class="eyebrow">Life Balance</div>
               <h1 class="life-balance-hero-title">
-                Gentle structure for a steadier life.
+                Five free tools for where you actually stand.
               </h1>
               <p class="lead">
-                Life Balance at Enable G is designed to reduce overwhelm and
-                create calm progress. We use simple assessment tools, practical
-                reflection, and ongoing support to help people regain a sense of
-                rhythm.
+                Rate ten areas of your life and see which one is starving. Work
+                out what is blocking you, and whether this month is covered.
+                Four to ten minutes each, on your phone, and nothing you type
+                leaves your device.
               </p>
+              <div class="hero-actions" style="margin-top: 26px">
+                <a class="btn btn-primary" href="#tools">Start with a tool</a>
+              </div>
             </div>
             <div class="page-hero-card reveal">
               <img
-                src="assets/leaves%20and%20hand.jpg"
-                alt="Leaves held in a hand"
+                src="assets/life-balance-hero.jpg"
+                alt="A man looking at his phone on a city street"
                 loading="eager"
                 decoding="sync"
                 fetchpriority="high"
+                width="1920"
+                height="1280"
+                style="object-position: 60% center"
               />
+            </div>
+          </div>
+        </section>
+
+        <!-- ── The tools ────────────────────────────────────────── -->
+        <section class="section-compact" id="tools">
+          <div class="container">
+            <div class="next-step reveal" data-next-step hidden>
+              <div class="next-step-copy">
+                <div class="eyebrow">Where you left off</div>
+                <h2 data-next-title>&nbsp;</h2>
+                <p data-next-copy>&nbsp;</p>
+              </div>
+              <a class="btn btn-primary" data-next-link href="#">Continue</a>
+            </div>
+
+            <div class="stage-head reveal">
+              <span class="stage-number">1</span>
+              <h2>See where you stand</h2>
+              <p>
+                Ten minutes between the three of them. Nothing is locked and
+                nothing is in a fixed order &mdash; start with whichever question
+                is actually bothering you.
+              </p>
+            </div>
+
+            <div class="tool-grid">
+              <article class="tool-card reveal" data-tool="life-balance">
+                <div class="tool-card-top">
+                  <h3>Life Balance Wheel</h3>
+                  <span class="status" data-state="new">Not started</span>
+                </div>
+                <p class="card-copy">
+                  Rate ten areas &mdash; work, family, health, finance, growth,
+                  relationships, learning, hobbies, spirituality, environment
+                  &mdash; from one to ten. You see which one is starving while
+                  the others eat.
+                </p>
+                <div class="tool-facts">
+                  <span>10 areas</span>
+                  <span>7 wheels</span>
+                  <span>~5 min</span>
+                </div>
+                <p class="tool-result" data-result hidden></p>
+                <div class="tool-card-actions">
+                  <a class="btn btn-primary" data-launch href="#">Start</a>
+                </div>
+              </article>
+
+              <article class="tool-card reveal" data-tool="blockages">
+                <div class="tool-card-top">
+                  <h3>What is blocking me</h3>
+                  <span class="status" data-state="new">Not started</span>
+                </div>
+                <p class="card-copy">
+                  Twenty questions across six areas: how you think, your energy,
+                  your habits, what you feel, your direction, and the people
+                  around you. You get a score out of 100 and three things to try.
+                </p>
+                <div class="tool-facts">
+                  <span>20 questions</span>
+                  <span>6 areas</span>
+                  <span>~4 min</span>
+                </div>
+                <p class="tool-result" data-result hidden></p>
+                <div class="tool-card-actions">
+                  <a class="btn btn-primary" data-launch href="#">Start</a>
+                </div>
+              </article>
+
+              <article class="tool-card reveal" data-tool="personality">
+                <div class="tool-card-top">
+                  <h3>How you work</h3>
+                  <span class="status" data-state="new">Not started</span>
+                </div>
+                <p class="card-copy">
+                  Twenty statements, agree or disagree. Covers your daily
+                  mindset, how you handle setbacks, how you learn, and how you
+                  cope when plans change.
+                </p>
+                <div class="tool-facts">
+                  <span>20 statements</span>
+                  <span>4 areas</span>
+                  <span>~4 min</span>
+                </div>
+                <p class="tool-result" data-result hidden></p>
+                <div class="tool-card-actions">
+                  <a class="btn btn-primary" data-launch href="#">Start</a>
+                </div>
+              </article>
             </div>
           </div>
         </section>
 
         <section class="section-compact">
           <div class="container">
-            <div class="service-grid">
-              <article class="service-card reveal">
-                <div>
-                  <div class="card-index">01</div>
-                  <h3 class="card-title">Assess what needs attention</h3>
-                  <p class="card-copy">
-                    Begin with a simple reflection on the areas of life that are
-                    asking for care, energy, or clarity.
-                  </p>
+            <div class="stage-head reveal">
+              <span class="stage-number">2</span>
+              <h2>Steady the money</h2>
+              <p>
+                Most other things get easier once the month is covered. The first
+                shows what is actually happening; the second turns it into a plan
+                you can hold to.
+              </p>
+            </div>
+
+            <div class="tool-grid">
+              <article class="tool-card reveal" data-tool="spending-income">
+                <div class="tool-card-top">
+                  <h3>Spending &amp; Income</h3>
+                  <span class="status" data-state="new">Not started</span>
                 </div>
-                <div class="service-meta">
-                  <span>Reflection</span>
-                  <span>Priorities</span>
-                  <span>Focus</span>
+                <p class="card-copy">
+                  Set out what the month costs, what is coming in, and the gap
+                  between them. Then it looks at your skills and suggests ways to
+                  close it &mdash; ending with what to do next, not just a number.
+                </p>
+                <div class="tool-facts">
+                  <span>Built for SA</span>
+                  <span>Side hustle ideas</span>
+                  <span>~10 min</span>
+                </div>
+                <p class="tool-result" data-result hidden></p>
+                <div class="tool-card-actions">
+                  <a class="btn btn-primary" data-launch href="#">Start</a>
                 </div>
               </article>
 
-              <article class="service-card reveal">
-                <div>
-                  <div class="card-index">02</div>
-                  <h3 class="card-title">Choose one or two next steps</h3>
-                  <p class="card-copy">
-                    Instead of carrying everything at once, define the next few
-                    actions that matter most for stability.
-                  </p>
+              <article class="tool-card reveal" data-tool="budget">
+                <div class="tool-card-top">
+                  <h3>Budget</h3>
+                  <span class="status" data-state="new">Not started</span>
                 </div>
-                <div class="service-meta">
-                  <span>Simplicity</span>
-                  <span>Direction</span>
-                  <span>Momentum</span>
+                <p class="card-copy">
+                  Split what you earn into essentials and everything else, set
+                  goals with deadlines, and build an emergency fund. Tells you
+                  plainly whether the month runs short or spare.
+                </p>
+                <div class="tool-facts">
+                  <span>Goals &amp; deadlines</span>
+                  <span>Emergency fund</span>
+                  <span>~10 min</span>
+                </div>
+                <p class="tool-result" data-result hidden></p>
+                <div class="tool-card-actions">
+                  <a class="btn btn-primary" data-launch href="#">Start</a>
                 </div>
               </article>
             </div>
+
+            <p class="storage-note" data-storage-note hidden>
+              Progress is remembered on this device only. Clearing your browser,
+              or moving to another phone, starts you fresh.
+            </p>
           </div>
         </section>
 
@@ -136,43 +259,62 @@
           <div class="container">
             <div class="editorial">
               <div class="editorial-copy reveal">
-                <div class="eyebrow">What this includes</div>
-                <h2>Tools that support consistency, not pressure.</h2>
+                <div class="eyebrow">Afterwards</div>
+                <h2>One reading tells you little. Six of them tell you a lot.</h2>
                 <p class="lead">
-                  The Life Balance pathway includes supportive tools like the
-                  Life Balance Wheel, ongoing progress tracking, and a clear
-                  weekly rhythm.
+                  A score on a Tuesday is a snapshot. What is worth knowing is
+                  whether the number moved, and the Progress Tracker is for
+                  exactly that &mdash; set a few goals and check in weekly.
                 </p>
                 <div class="editorial-list">
                   <div>
                     <span>1</span>
-                    <p>Identify the areas of life that most need care and attention.</p>
+                    <p>
+                      Do a tool once to get a starting point you can argue with.
+                    </p>
                   </div>
                   <div>
                     <span>2</span>
-                    <p>Create a realistic rhythm that helps you return to what matters.</p>
+                    <p>
+                      Pick one thing from its three suggestions. Not all three.
+                    </p>
                   </div>
                   <div>
                     <span>3</span>
-                    <p>Track progress gently so consistency becomes easier to keep.</p>
+                    <p>
+                      Come back in six weeks and take it again. The gap between
+                      the two is the actual result.
+                    </p>
                   </div>
+                </div>
+                <div class="tool-card-actions" style="margin-top: 28px">
+                  <a
+                    class="btn btn-primary"
+                    data-launch
+                    data-tool="progress-tracker"
+                    href="#"
+                    >Open the tracker</a
+                  >
                 </div>
               </div>
 
               <div class="media-stack reveal">
                 <div class="main">
                   <img
-                    src="assets/leaves%20and%20glass.jpg"
-                    alt="Leaves and glass arrangement"
+                    src="assets/life-balance-inset.jpg"
+                    alt="Two people at a table, one writing in a notebook"
                     loading="lazy"
                     decoding="async"
+                    width="1920"
+                    height="1280"
+                    style="object-position: 55% 62%"
                   />
                 </div>
                 <div class="small">
-                  <strong>Life Balance supports</strong>
+                  <strong>Pick one thing</strong>
                   <p class="card-copy">
-                    Reflection, weekly check-ins, and simple structure that
-                    reduces stress and improves follow-through.
+                    Every tool ends with three suggestions. Doing one of them
+                    beats reading all three and doing none.
                   </p>
                 </div>
               </div>
@@ -180,16 +322,16 @@
 
             <div class="stats-band">
               <article class="stat-card reveal">
-                <strong>1-2</strong>
-                <span>focused priorities chosen at a time</span>
+                <strong>5</strong>
+                <span>tools on this page, free and with no account</span>
               </article>
               <article class="stat-card reveal">
-                <strong>Weekly</strong>
-                <span>a gentle rhythm of planning, checking in, and adjusting</span>
+                <strong>6 weeks</strong>
+                <span>before a repeat reading tells you anything useful</span>
               </article>
               <article class="stat-card reveal">
-                <strong>Calm</strong>
-                <span>a design and support style that encourages clarity over pressure</span>
+                <strong>1</strong>
+                <span>suggestion to act on, not the whole list</span>
               </article>
             </div>
           </div>
@@ -206,8 +348,8 @@
                 class="brand-logo"
               />
               <p class="lead">
-                Life Balance support that brings more steadiness, clarity, and
-                practical momentum.
+                Five free tools for seeing where you stand and working out
+                whether the month is covered.
               </p>
             </div>
             <div>
@@ -245,6 +387,8 @@
 
     <script src="js/main.js"></script>
     <script src="js/motion.js"></script>
+    <script src="js/enableg-progress.js"></script>
+    <script src="js/apps-hub.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>

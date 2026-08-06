@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Enable G | Get Paid</title>
+    <meta
+      name="description"
+      content="Price a job, check it is worth doing, and send a professional quote or invoice on WhatsApp. Works offline."
+    />
+    <meta name="theme-color" content="#143928" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/icon-192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Outfit:wght@500;600;700;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app-shell">
+      <!-- ============================ HEADER ============================ -->
+      <header class="site-header">
+        <div class="container header-inner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">G</span>
+            <div class="brand-text">
+              <div class="brand-name">Get Paid</div>
+              <div class="brand-sub">by Enable G</div>
+            </div>
+          </div>
+
+          <div class="header-meta">
+            <span class="save-chip" id="saveStatus">Saved on this phone</span>
+          </div>
+        </div>
+      </header>
+
+      <main id="main">
+        <!-- ========================= VIEW: JOBS ========================= -->
+        <section class="view" id="viewJobs" aria-labelledby="jobsTitle">
+          <div class="container">
+            <div class="money-band">
+              <div class="money-band-item">
+                <div class="money-band-label">Owed to you</div>
+                <div class="money-band-value" id="statOutstanding">R0</div>
+              </div>
+              <div class="money-band-divider" aria-hidden="true"></div>
+              <div class="money-band-item">
+                <div class="money-band-label">Paid this month</div>
+                <div class="money-band-value money-band-value-soft" id="statPaid">
+                  R0
+                </div>
+              </div>
+            </div>
+
+            <div class="section-head">
+              <h1 id="jobsTitle">Your jobs</h1>
+              <div class="filter-row" role="group" aria-label="Filter jobs">
+                <button class="chip is-active" type="button" data-filter="all">
+                  All
+                </button>
+                <button class="chip" type="button" data-filter="unpaid">
+                  Unpaid
+                </button>
+                <button class="chip" type="button" data-filter="paid">
+                  Paid
+                </button>
+              </div>
+            </div>
+
+            <div id="jobList" class="job-list"></div>
+
+            <div class="empty-state" id="jobsEmpty" hidden>
+              <div class="empty-mark" aria-hidden="true">R</div>
+              <h2>No jobs yet</h2>
+              <p>
+                Add your first job to work out a fair price and send a quote on
+                WhatsApp.
+              </p>
+              <button class="btn btn-primary" type="button" data-go="new">
+                Price a job
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================= VIEW: JOB ========================== -->
+        <section class="view" id="viewJob" aria-labelledby="jobFormTitle" hidden>
+          <div class="container">
+            <button class="back-link" type="button" data-go="jobs">
+              &larr; All jobs
+            </button>
+
+            <h1 id="jobFormTitle">Price a job</h1>
+            <p class="lede">
+              Fill in what you can. The price and your real earnings update as
+              you type.
+            </p>
+
+            <!-- ---------- Client ---------- -->
+            <div class="card">
+              <h2 class="card-title">Who is it for</h2>
+
+              <div class="field">
+                <label for="clientName">Client name</label>
+                <input
+                  id="clientName"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="e.g. Nomsa Dlamini"
+                />
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="clientPhone">Their WhatsApp number</label>
+                  <input
+                    id="clientPhone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="off"
+                    placeholder="e.g. 082 123 4567"
+                  />
+                </div>
+                <div class="field">
+                  <label for="jobDate">Job date</label>
+                  <input id="jobDate" type="date" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="jobTitle">What is the job</label>
+                <input
+                  id="jobTitle"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="e.g. Box braids, shoulder length"
+                />
+              </div>
+            </div>
+
+            <!-- ---------- Pricing ---------- -->
+            <div class="card">
+              <h2 class="card-title">How you are charging</h2>
+
+              <div class="segmented" role="group" aria-label="Pricing method">
+                <button class="seg is-active" type="button" data-mode="hourly">
+                  By the hour
+                </button>
+                <button class="seg" type="button" data-mode="unit">
+                  Per item
+                </button>
+                <button class="seg" type="button" data-mode="fixed">
+                  One price
+                </button>
+              </div>
+
+              <!-- Hourly -->
+              <div class="mode-panel" id="modeHourly">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="hours">Hours it will take</label>
+                    <input
+                      id="hours"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="0.5"
+                      placeholder="0"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="rate">Your rate per hour</label>
+                    <div class="input-prefix">
+                      <span aria-hidden="true">R</span>
+                      <input
+                        id="rate"
+                        type="number"
+                        inputmode="decimal"
+                        min="0"
+                        step="10"
+                        placeholder="150"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p class="hint" id="rateHint"></p>
+              </div>
+
+              <!-- Per unit -->
+              <div class="mode-panel" id="modeUnit" hidden>
+                <div class="lines" id="unitLines"></div>
+                <button class="btn btn-ghost btn-sm" type="button" id="btnAddLine">
+                  + Add another item
+                </button>
+                <div class="field" style="margin-top: 14px">
+                  <label for="unitHours">
+                    How many hours will all of it take
+                  </label>
+                  <input
+                    id="unitHours"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="0.5"
+                    placeholder="0"
+                  />
+                  <p class="hint">
+                    Needed to check what you really earn per hour.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Fixed -->
+              <div class="mode-panel" id="modeFixed" hidden>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="fixedPrice">Price for the whole job</label>
+                    <div class="input-prefix">
+                      <span aria-hidden="true">R</span>
+                      <input
+                        id="fixedPrice"
+                        type="number"
+                        inputmode="decimal"
+                        min="0"
+                        step="10"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fixedHours">Hours it will take</label>
+                    <input
+                      id="fixedHours"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="0.5"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------- Costs ---------- -->
+            <div class="card">
+              <h2 class="card-title">What the job costs you</h2>
+              <p class="card-note">
+                Money you spend to do the job. This is not profit.
+              </p>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="materials">Materials &amp; supplies</label>
+                  <div class="input-prefix">
+                    <span aria-hidden="true">R</span>
+                    <input
+                      id="materials"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="10"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="travelCost">Transport</label>
+                  <div class="input-prefix">
+                    <span aria-hidden="true">R</span>
+                    <input
+                      id="travelCost"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="10"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="travelHours">Travel time (hours)</label>
+                  <input
+                    id="travelHours"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="0.5"
+                    placeholder="0"
+                  />
+                </div>
+                <div class="field">
+                  <label for="deposit">Deposit asked upfront</label>
+                  <div class="input-prefix">
+                    <span aria-hidden="true">R</span>
+                    <input
+                      id="deposit"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="10"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------- Verdict ---------- -->
+            <div class="card verdict-card" id="verdictCard">
+              <div class="verdict-head">
+                <h2 class="card-title">Is this job worth it?</h2>
+                <span class="verdict-badge" id="verdictBadge">Add your hours</span>
+              </div>
+
+              <div class="verdict-rows">
+                <div class="vrow">
+                  <span>Client pays</span>
+                  <strong id="vTotal">R0</strong>
+                </div>
+                <div class="vrow vrow-minus">
+                  <span>Less materials &amp; transport</span>
+                  <strong id="vCosts">&minus;R0</strong>
+                </div>
+                <div class="vrow vrow-keep">
+                  <span>You keep</span>
+                  <strong id="vKeep">R0</strong>
+                </div>
+              </div>
+
+              <div class="verdict-rate">
+                <div class="verdict-rate-num" id="vPerHour">R0<small>/hr</small></div>
+                <div class="verdict-rate-label">
+                  Your real earnings, including travel time
+                </div>
+              </div>
+
+              <div class="meter" aria-hidden="true">
+                <div class="meter-fill" id="vMeter"></div>
+                <div class="meter-floor" id="vFloorMark"></div>
+              </div>
+
+              <p class="verdict-text" id="verdictText">
+                Enter your hours and price to see what this job really pays.
+              </p>
+            </div>
+
+            <div class="action-bar">
+              <button class="btn btn-ghost" type="button" id="btnDeleteJob" hidden>
+                Delete
+              </button>
+              <button class="btn btn-primary btn-wide" type="button" id="btnSaveJob">
+                Save job
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================= VIEW: DOCUMENT ======================= -->
+        <section class="view" id="viewDoc" aria-labelledby="docTitle" hidden>
+          <div class="container no-print">
+            <button class="back-link" type="button" data-go="jobs">
+              &larr; All jobs
+            </button>
+
+            <h1 id="docTitle">Send it</h1>
+
+            <div class="segmented" role="group" aria-label="Document type">
+              <button class="seg is-active" type="button" data-doc="quote">
+                Quote
+              </button>
+              <button class="seg" type="button" data-doc="invoice">
+                Invoice
+              </button>
+            </div>
+
+            <div class="send-actions">
+              <button class="btn btn-primary btn-wide" type="button" id="btnWhatsApp">
+                Send on WhatsApp
+              </button>
+              <button class="btn btn-ghost btn-wide" type="button" id="btnPrint">
+                Save as PDF
+              </button>
+              <button class="btn btn-ghost btn-wide" type="button" id="btnCopy">
+                Copy the message
+              </button>
+            </div>
+
+            <p class="hint" id="sendHint"></p>
+
+            <div class="status-switch" role="group" aria-label="Payment status">
+              <span class="status-switch-label">Mark this job as</span>
+              <div class="filter-row">
+                <button class="chip" type="button" data-status="draft">Draft</button>
+                <button class="chip" type="button" data-status="sent">Sent</button>
+                <button class="chip" type="button" data-status="paid">Paid</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Printable document -->
+          <div class="paper-wrap">
+            <article class="paper" id="paper">
+              <header class="paper-head">
+                <div class="paper-from">
+                  <div class="paper-biz" id="pBiz">Your business</div>
+                  <div class="paper-lines" id="pFrom"></div>
+                </div>
+                <div class="paper-doc">
+                  <div class="paper-doctype" id="pDocType">QUOTE</div>
+                  <div class="paper-docno" id="pDocNo">Q-0001</div>
+                  <div class="paper-lines" id="pDates"></div>
+                </div>
+              </header>
+
+              <section class="paper-to">
+                <div class="paper-label">For</div>
+                <div class="paper-client" id="pClient">Client</div>
+                <div class="paper-lines" id="pClientPhone"></div>
+              </section>
+
+              <table class="paper-table">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th class="ta-r">Qty</th>
+                    <th class="ta-r">Price</th>
+                    <th class="ta-r">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="pRows"></tbody>
+              </table>
+
+              <div class="paper-totals" id="pTotals"></div>
+
+              <footer class="paper-foot">
+                <div class="paper-pay" id="pPay"></div>
+                <div class="paper-note" id="pNote"></div>
+              </footer>
+            </article>
+          </div>
+        </section>
+
+        <!-- ======================== VIEW: SETUP ========================= -->
+        <section class="view" id="viewSetup" aria-labelledby="setupTitle" hidden>
+          <div class="container">
+            <h1 id="setupTitle">Your details</h1>
+            <p class="lede">
+              Filled in once. These appear on every quote and invoice you send.
+            </p>
+
+            <div class="card">
+              <h2 class="card-title">Your business</h2>
+
+              <div class="field">
+                <label for="bizName">Business or your name</label>
+                <input
+                  id="bizName"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder="e.g. Thandi's Braiding"
+                />
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="bizPhone">Your phone</label>
+                  <input
+                    id="bizPhone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="e.g. 073 555 1234"
+                  />
+                </div>
+                <div class="field">
+                  <label for="bizEmail">Email (optional)</label>
+                  <input
+                    id="bizEmail"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="bizAddress">Area or address (optional)</label>
+                <input
+                  id="bizAddress"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="e.g. Soweto, Johannesburg"
+                />
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="card-title">How clients pay you</h2>
+              <p class="card-note">
+                Shown on invoices only. Kept on this phone &mdash; never sent
+                anywhere.
+              </p>
+
+              <div class="field">
+                <label for="payDetails">Payment details</label>
+                <textarea
+                  id="payDetails"
+                  rows="4"
+                  placeholder="e.g. Capitec&#10;Acc 1234567890&#10;Ref: your name&#10;or: Cash on the day"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="card-title">Your minimum rate</h2>
+              <p class="card-note">
+                Used to check whether a job is worth doing. Enable G suggests no
+                less than R150 an hour.
+              </p>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="floorRate">Never work below</label>
+                  <div class="input-prefix">
+                    <span aria-hidden="true">R</span>
+                    <input
+                      id="floorRate"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="10"
+                      placeholder="150"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="defaultRate">Your usual rate</label>
+                  <div class="input-prefix">
+                    <span aria-hidden="true">R</span>
+                    <input
+                      id="defaultRate"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="10"
+                      placeholder="150"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="quoteValidity">Quotes stay valid for (days)</label>
+                <input
+                  id="quoteValidity"
+                  type="number"
+                  inputmode="numeric"
+                  min="1"
+                  step="1"
+                  placeholder="14"
+                />
+              </div>
+            </div>
+
+            <div class="action-bar">
+              <button class="btn btn-ghost" type="button" id="btnResetAll">
+                Erase everything
+              </button>
+              <button class="btn btn-primary btn-wide" type="button" id="btnSaveSetup">
+                Save details
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ============================ NAV ============================== -->
+      <nav class="tabbar no-print" aria-label="Sections">
+        <button class="tab is-active" type="button" data-go="jobs">
+          <span class="tab-ico" aria-hidden="true">&#9632;</span>
+          <span>Jobs</span>
+        </button>
+        <button class="tab tab-cta" type="button" data-go="new">
+          <span class="tab-ico" aria-hidden="true">+</span>
+          <span>New job</span>
+        </button>
+        <button class="tab" type="button" data-go="setup">
+          <span class="tab-ico" aria-hidden="true">&#9679;</span>
+          <span>Details</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
