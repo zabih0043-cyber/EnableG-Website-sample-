@@ -121,11 +121,16 @@ h1 {
   z-index: 60;
 }
 
+/* The file is a square lockup — icon above "ENABLE G" above "GROWTH
+   COMMUNITY" — so the wordmark is only about a third of the height. At 40px
+   it was unreadable. Scales with the viewport so it stays legible on a phone
+   without crowding the save chip. */
 .brand-logo {
   display: block;
-  height: 40px;
+  height: clamp(58px, 13vw, 78px);
   width: auto;
   object-fit: contain;
+  margin: -8px 0; /* the lockup has built-in padding; this reclaims it */
 }
 
 .header-inner {

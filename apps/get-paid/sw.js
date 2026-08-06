@@ -6,10 +6,10 @@
    otherwise phones will keep serving the old copy.
    ========================================================================== */
 
-/* v2 — re-skinned to the Enable G design tokens and the real logo. Without
-   this bump, phones that already opened the app would keep serving the old
-   cached shell and never see the new styling. */
-const CACHE_NAME = "enableg-getpaid-v2";
+/* v3 — larger logo. v2 already shipped with it at 40px, so anyone who
+   opened the app in the meantime has that stylesheet cached and needs this
+   bump to see the change. Bump this on every change to a SHELL file. */
+const CACHE_NAME = "enableg-getpaid-v3";
 
 const SHELL = [
   "./",
