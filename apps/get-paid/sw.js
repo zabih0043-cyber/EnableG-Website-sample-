@@ -6,7 +6,10 @@
    otherwise phones will keep serving the old copy.
    ========================================================================== */
 
-const CACHE_NAME = "enableg-getpaid-v1";
+/* v2 — re-skinned to the Enable G design tokens and the real logo. Without
+   this bump, phones that already opened the app would keep serving the old
+   cached shell and never see the new styling. */
+const CACHE_NAME = "enableg-getpaid-v2";
 
 const SHELL = [
   "./",
@@ -14,6 +17,9 @@ const SHELL = [
   "./styles.css",
   "./app.js",
   "./manifest.webmanifest",
+  /* The brand mark is part of the shell now. Left out, an offline visitor
+     gets a broken image where the logo should be. */
+  "./assets/enableg-logo.png",
 ];
 
 self.addEventListener("install", (event) => {

@@ -680,7 +680,21 @@ textarea{
 /* ═══════════════════════════════════════════
    PAGE HERO (inner pages)
    ═══════════════════════════════════════════ */
-.page-hero{ padding:34px 0 56px; }
+/* ── Page hero ───────────────────────────────────────────────────────
+   Was: text and a rounded photo card side by side, equal width, both
+   centred inside the container. That is the most passive arrangement
+   available — no scale contrast, nothing bleeding off an edge, and the
+   photograph framed as an object on the page rather than a view into a
+   scene.
+
+   Now: the photograph runs off the right edge of the viewport and stands
+   taller than the text, the text column is the narrower of the two, and
+   the copy sits low against it. The asymmetry is the point.
+   ═══════════════════════════════════════════ */
+.page-hero{
+  padding:56px 0 76px;
+  overflow:hidden; /* the bleeding image must not create a sideways scroll */
+}
 
 .page-hero-grid{
   display:grid;
@@ -777,8 +791,48 @@ textarea{
 }
 
 @media (min-width:980px){
+  /* Text takes the narrower column, so the photograph leads the eye. */
   .page-hero-grid{
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-columns:minmax(0,0.82fr) minmax(0,1fr);
+    gap:56px;
+    align-items:end;
+  }
+
+  /* Contact has no hero photograph. Without this it keeps the second column
+     and sits beside 650px of nothing. */
+  .page-hero-grid--solo{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .page-hero-grid--solo .page-hero-copy{
+    max-width:62ch;
+    padding-bottom:0;
+  }
+
+  /* The copy sits low against the image rather than centred beside it. */
+  .page-hero-copy{ padding-bottom:34px; }
+
+  /* Runs off the right edge of the screen. The pull is deliberately larger
+     than the gap it needs to cover — .page-hero clips the overflow, so
+     overshooting is safe, whereas trying to land exactly on the edge
+     depends on the grid column width and drifts at some sizes. */
+  .page-hero-card{
+    margin-right:calc(-1 * (max(0px, (100vw - var(--max))) / 2 + 40px));
+    min-height:min(72vh, 620px);
+    border-radius:var(--radius-lg) 0 0 var(--radius-lg);
+    box-shadow:none; /* a drop shadow on an edge that runs off-screen reads as a mistake */
+  }
+}
+
+/* Below the two-column breakpoint the image bleeds both edges instead,
+   which keeps the same intent without squeezing the photograph. */
+@media (max-width:979px){
+  .page-hero-card{
+    margin-left:-40px;
+    margin-right:-40px;
+    border-radius:0;
+    min-height:52vh;
+    box-shadow:none;
   }
 }
 

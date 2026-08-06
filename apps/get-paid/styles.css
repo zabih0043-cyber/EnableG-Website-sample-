@@ -3,35 +3,41 @@
    Mobile-first. Tokens shared with the Spending & Income Tool (SA).
    ========================================================================== */
 
+/* Values below are the Enable G site tokens (css/variables.css), not this
+   app's originals. It previously ran on Tailwind's cool slate palette with
+   Inter and Playfair Display, so it read as a different company's product
+   sitting next to the site. The names are kept so nothing else has to
+   change — only what they resolve to. */
 :root {
-  --bg: #f8fafc;
-  --bg-deep: #eef7eb;
+  --bg: #fcfaf5;
+  --bg-deep: #f4efe5;
   --surface: #ffffff;
-  --surface-muted: #f8fafc;
-  --surface-soft: #f0f7ec;
-  --ink: #0f172a;
-  --ink-soft: #64748b;
-  --ink-faint: #94a3b8;
-  --accent: #68be45;
-  --accent-deep: #4a9630;
-  --accent-soft: rgba(104, 190, 69, 0.1);
-  --forest: #143928;
-  --danger: #dc2626;
-  --danger-soft: rgba(220, 38, 38, 0.08);
-  --warning: #b7791f;
-  --warning-soft: rgba(183, 121, 31, 0.1);
-  --border: rgba(226, 232, 240, 0.95);
-  --border-strong: rgba(203, 213, 225, 0.92);
-  --shadow-soft: 0 8px 18px rgba(148, 163, 184, 0.1);
-  --shadow-strong: 0 14px 30px rgba(148, 163, 184, 0.14);
-  --radius-lg: 24px;
+  --surface-muted: #f8f4eb;
+  --surface-soft: #f4efe5;
+  --ink: #171712;
+  --ink-soft: #5f6057;
+  --ink-faint: #8b8c81;
+  --accent: #88cb4d;
+  --accent-deep: #215d47;
+  --accent-soft: rgba(136, 203, 77, 0.12);
+  --forest: #215d47;
+  --gold: #c5a45d;
+  --danger: #9c3b28;
+  --danger-soft: rgba(156, 59, 40, 0.08);
+  --warning: #a8863c;
+  --warning-soft: rgba(168, 134, 60, 0.1);
+  --border: rgba(23, 23, 18, 0.11);
+  --border-strong: rgba(23, 23, 18, 0.18);
+  --shadow-soft: 0 16px 40px rgba(17, 22, 20, 0.05);
+  --shadow-strong: 0 24px 70px rgba(17, 22, 20, 0.08);
+  --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
   --gutter: 18px;
   --tabbar-h: 68px;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-heading: "Outfit", "Inter", sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-heading: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
 }
 
 *,
@@ -63,9 +69,13 @@ h3 {
   margin: 0;
 }
 
+/* Page titles carry the site's display serif — the clearest brand cue there
+   is. Card titles and labels stay in the sans, because a form needs to be
+   read quickly rather than admired. */
 h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
@@ -96,11 +106,26 @@ h1 {
 
 /* ------------------------------- Header --------------------------------- */
 
+/* Matches the site's nav — cream ground, hairline rule, dark ink. It was a
+   solid dark-green bar, which meant the Enable G logo (black wordmark on a
+   light field) could not be shown on it at all. */
 .site-header {
-  background: var(--forest);
-  color: #fff;
-  padding: 14px 0;
-  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  background: rgba(252, 250, 245, 0.92);
+  backdrop-filter: blur(18px);
+  color: var(--ink);
+  border-bottom: 1px solid rgba(23, 23, 18, 0.08);
+  padding: 10px 0;
+  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
+
+.brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .header-inner {
@@ -115,20 +140,8 @@ h1 {
   align-items: center;
   gap: 10px;
   min-width: 0;
-}
-
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  flex: 0 0 38px;
-  border-radius: 11px;
-  background: var(--accent);
-  color: var(--forest);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
 }
 
 .brand-name {
@@ -140,16 +153,21 @@ h1 {
 
 .brand-sub {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--forest);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  font-weight: 600;
+}
+
+.brand:hover .brand-sub {
+  text-decoration: underline;
 }
 
 .save-chip {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.72);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--ink-soft);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
   padding: 5px 10px;
   border-radius: 999px;
   white-space: nowrap;
