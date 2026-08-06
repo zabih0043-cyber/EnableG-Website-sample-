@@ -6,10 +6,11 @@
    otherwise phones will keep serving the old copy.
    ========================================================================== */
 
-/* v3 — larger logo. v2 already shipped with it at 40px, so anyone who
-   opened the app in the meantime has that stylesheet cached and needs this
-   bump to see the change. Bump this on every change to a SHELL file. */
-const CACHE_NAME = "enableg-getpaid-v3";
+/* v4 — logo at the 116px Enable G convention.
+   BUMP THIS on every change to a file in SHELL below. The app is offline
+   first, so without a bump returning phones keep serving the old copy and
+   the change never reaches them. */
+const CACHE_NAME = "enableg-getpaid-v4";
 
 const SHELL = [
   "./",

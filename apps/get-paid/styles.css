@@ -121,16 +121,17 @@ h1 {
   z-index: 60;
 }
 
-/* The file is a square lockup — icon above "ENABLE G" above "GROWTH
-   COMMUNITY" — so the wordmark is only about a third of the height. At 40px
-   it was unreadable. Scales with the viewport so it stays legible on a phone
-   without crowding the save chip. */
+/* 116px is the Enable G convention — the site nav and the Spending & Income
+   tool both render this same square lockup at that width. The file stacks
+   the icon above "ENABLE G" above "GROWTH COMMUNITY", so the wordmark is
+   only about a third of the total height and anything smaller is unreadable. */
 .brand-logo {
   display: block;
-  height: clamp(58px, 13vw, 78px);
-  width: auto;
+  width: 116px;
+  height: auto;
+  flex: 0 0 auto;
   object-fit: contain;
-  margin: -8px 0; /* the lockup has built-in padding; this reclaims it */
+  margin: -10px 0; /* the lockup has built-in padding; this reclaims it */
 }
 
 .header-inner {
